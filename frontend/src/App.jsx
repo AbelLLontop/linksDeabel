@@ -1,5 +1,6 @@
-import Form from './components/common/Form/Form';
+
 import styled from 'styled-components';
+import Link from './components/common/Link/Link';
 
 const AppContent = styled.div`
   background-color: #14222C;
@@ -10,7 +11,7 @@ const AppContent = styled.div`
 function App() {
   return (
     <AppContent>
-    <Form/>
+      <Link/>
     </AppContent>
      
   );
