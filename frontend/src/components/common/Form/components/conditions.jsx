@@ -41,7 +41,7 @@ export const conditionEmpty = (state, setState) => {
     return false;
   }
 };
-
+ 
 export const conditionUrl = (state, setState) => {
   let url;
   try {

@@ -5,7 +5,7 @@ import { HeaderForm } from './components/HeaderForm';
 import { LogoForm } from './components/LogoForm';
 import { InputForm } from './components/InputForm';
 import { ButtonsForm } from './components/ButtonsForm';
-import {
+import { 
   conditionEmpty,
   conditionUrl,
   validateInput,
@@ -27,7 +27,7 @@ const disabledInputSusses = (setState,message) => {
     ...prevState,
     state: statesInput.success,
     colors: selectorColor(statesInput.success),
-    message: message,
+    message: message, 
   }));
 }
 
@@ -36,7 +36,7 @@ const Form = () => {
   const [stateInputTitle, setStateInputTitle] = useStateInput();
   const [stateInputDescription, setStateInputDescription] = useStateInput();
   const [loading, setLoading] = useState(false);
-
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     
