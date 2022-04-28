@@ -11,7 +11,7 @@ const getAllCategories = async() => {
     return e.response.data;
   }
 }
-
+ 
 const getCategory = async (id=1) => {
   try{
     const result = await axios.get(API_URL+'/categories/'+id);
@@ -21,6 +21,7 @@ const getCategory = async (id=1) => {
     return e.response.data;
   }
 }
+
 const createCategory = async (formData = {}) => {
   try{
     const result = await axios.post(API_URL+'/categories',formData);
@@ -40,7 +41,7 @@ const updateCategory =async (formData={}) => {
   }
 
 }
-const deleteLink = async (id="1") => {
+const deleteCategory = async (id="1") => {
   try{
     const result = await axios.delete(API_URL+'/categories/'+id);
     return result.data;
@@ -51,8 +52,8 @@ const deleteLink = async (id="1") => {
 
 }
 
-const linkService =
-  {getLink,createLink,updateLink,deleteLink,getAllLink,deleteLink}
+const categoryService =
+  { getAllCategories, getCategory, createCategory, updateCategory, deleteCategory };
 
 
-export default linkService;
+export default categoryService;

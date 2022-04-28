@@ -40,7 +40,6 @@ categoriesController.getCategory = async (req, res) => {
     res.json({ error: err }).status(500);
   }
 };
-
 categoriesController.createCategory = async (req, res) => {
   try {
     const newCategory = new Category(req.body); 

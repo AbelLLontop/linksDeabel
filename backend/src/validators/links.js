@@ -1,4 +1,4 @@
-const { body, param } = require('express-validator');
+const { body, param,query} = require('express-validator');
 const { ObjectId } = require('mongoose').Types;
 
 const validateResult = require('../middlewares/validateHerlper');
@@ -67,4 +67,4 @@ const validateLinkIdParam = [
 
 
 
-module.exports = { validateLink, validateLinkId, validateLinkIdParam };
+module.exports = { validateLink, validateLinkId, validateLinkIdParam};

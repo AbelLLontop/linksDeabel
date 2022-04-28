@@ -30,9 +30,23 @@ linksController.updateLink = async (req, res) => {
 
 linksController.getLinks = async (req, res) => {
   try {
-    const links = await Link.find();
+    const nameCategory = req.query.nameCategory;
+    const orderTitle = req.query.orderTitle;
+    const orderCategory = req.query.orderCategory;
+    const filter = {};
+    const orders = {};
+    if (nameCategory) {
+      filter.nameCategory = nameCategory;
+    }
+    if (orderTitle==1) {
+      orders.title = orderTitle;
+    }
+    if (orderCategory==1) {
+      orders.nameCategory = orderCategory;
+    }
+    const links = await Link.find(filter).sort({...orders,updated_at:-1});
     res.json(links);
-  } catch (err) {
+  } catch (err) { 
     console.log('ocurrio un error');
     res.json({ error: err }).status(500);
   }

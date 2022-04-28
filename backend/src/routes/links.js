@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const router = Router();
 const {getLinks,createLink,updateLink,getLink,deleteLink} = require('../controllers/links.controller');
-const { validateLink,validateLinkId,validateLinkIdParam } = require('../validators/links');
+const { validateLink,validateLinkId,validateLinkIdParam, validateLinkIdQuery } = require('../validators/links');
 
 router.route('/')
 .get(getLinks)

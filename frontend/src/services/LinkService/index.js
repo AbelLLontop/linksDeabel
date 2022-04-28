@@ -2,9 +2,14 @@ import axios from 'axios';
 import { API_URL } from "../config";
 
 
-const getAllLink = async() => { 
+const getAllLink = async(filters) => { 
+ 
   try{
-    const result = await axios.get(API_URL+'/links');
+    const result = await axios.get(API_URL+'/links',{
+      params:{
+        ...filters
+      }
+    });
     console.log(result);
     return result.data;
   }catch(e){

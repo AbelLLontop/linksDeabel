@@ -2,9 +2,10 @@ import React from 'react';
 import { LinkContent } from './LinkContent';
 
 const Link = ({title,fecha,link,description}) => {
+  console.log("hola");
   return (
     <LinkContent>
-      <header>
+          <header>
         <div>{title}</div>
         <span>{fecha}</span>
       </header>

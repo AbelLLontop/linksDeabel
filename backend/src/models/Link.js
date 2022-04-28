@@ -15,10 +15,15 @@ const linkSchema = new Schema({
         },
         category:{
             type:Schema.Types.ObjectId,
+            ref:'Category',
         }
 },
 {
-    versionKey: false // You should be aware of the outcome after set to false
+    versionKey: false, // You should be aware of the outcome after set to false
+    timestamps:{
+        createdAt:'created_at',
+        updatedAt:'updated_at'
+    }
 });
 
 module.exports = model ('Link',linkSchema);
