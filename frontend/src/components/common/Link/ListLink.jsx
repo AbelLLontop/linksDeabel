@@ -1,14 +1,42 @@
-import React from 'react'
-import Link from './Link'
+import React, { useEffect, useState } from 'react';
+import Link from './Link';
+import BorderDinamicLink, {
+  SubBorderDinamicLink,
+} from './components/BorderDinamicLink';
+import { filterListShow } from './utils/filterListShow';
 
-const ListLink = ({links=[]}) => {
+const ListLink = ({ links }) => {
+  const [filtersForCategory, setFiltersForCategory] = useState([]);
+  useEffect(() => {
+   const filterList = filterListShow(links);
+    setFiltersForCategory(filterList);
+  }, [links]);
+  /*
+
+
+*/
+
   return (
     <>
-        {links.map(({_id,link,title,description})=>(
-            <Link key={_id} title={title} link={link} fecha="una fecha" description={description}/>
-        ))}
+      {filtersForCategory?.map((filter) => (
+        <BorderDinamicLink key={filter.category} title={filter.category}>
+          {filter.dates?.map((linkDate) => (
+            <SubBorderDinamicLink key={linkDate.date} title={linkDate.date}>
+              {linkDate.links?.map(({ _id, link, title, description }) => (
+                <Link
+                  key={_id}
+                  title={title}
+                  link={link}
+                  fecha="una fecha"
+                  description={description}
+                />
+              ))}
+            </SubBorderDinamicLink>
+          ))}
+        </BorderDinamicLink>
+      ))}
     </>
-  )
-}
+  );
+};
 
-export default ListLink
+export default ListLink;

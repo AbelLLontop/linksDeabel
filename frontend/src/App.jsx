@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Header from './components/common/Header/Header';
+import OptionsFilterNav from './components/common/OptionsFilterNav';
 import Slider from './components/common/Slider/Slider';
 import PrincipalPage from './components/views/Pincipal';
 
@@ -18,6 +19,7 @@ function App() {
       <Slider />
       <div>
         <Header />
+        <OptionsFilterNav/>
         <PrincipalPage />
       </div>
     </AppContent>
