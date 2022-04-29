@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import linkService from '../../../services/LinkService';
+import Header from '../../common/Header/Header';
 import ListLink from '../../common/Link/ListLink';
+import OptionsFilterNav from '../../common/OptionsFilterNav';
 
 const PrincipalPage = () => {
   const [links, setLinks] = useState([]);
@@ -17,9 +19,11 @@ const PrincipalPage = () => {
       });
   }, []);
   return (
-
+    <div>
+      <Header />
+      <OptionsFilterNav />
       <ListLink links={links} />
-
+    </div>
   );
 };
 
