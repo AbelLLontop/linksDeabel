@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const HeaderContent = styled.header`
   color: #a3b0bb;
-  padding-top: 3.4rem;
+    padding: 16px 0;
   h1,
   h2 {
     font-size: 32px;

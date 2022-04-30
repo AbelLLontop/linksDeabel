@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Slider from './components/common/Slider/Slider';
 import PrincipalPage from './components/views/Pincipal';
+import FilterProvider from './contexts/Filters/FilterProvider';
 
 const AppContent = styled.div`
   background-color: #14222c;
@@ -14,8 +15,10 @@ const AppContent = styled.div`
 function App() {
   return (
     <AppContent>
-      <Slider />
-      <PrincipalPage/>
+      <FilterProvider>
+        <Slider />
+        <PrincipalPage />
+      </FilterProvider>
     </AppContent>
   );
 }

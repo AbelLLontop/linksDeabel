@@ -21,6 +21,7 @@ max-width: 826px;
 
 const SubBorderDinamicLinkContent = styled.div`
     border-left: solid 1px #74797C;
+
     display: grid;
   grid-template-columns: 287px 287px;
   grid-gap: 20px;
@@ -35,6 +36,7 @@ const SubBorderDinamicLinkContent = styled.div`
     color: #74797C;
     padding-left: 15px;
     font-size: .8rem;
+
   }
   .date::before{
     content: '';
@@ -45,6 +47,7 @@ const SubBorderDinamicLinkContent = styled.div`
     border-radius: 50%;
     background-color: #74797C;
     left: -7px;
+    z-index: 2;
   }
 
 `

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const SliderContent = styled.nav`
@@ -78,9 +78,33 @@ const SliderContent = styled.nav`
       background-color: #2489f6;
     }
   }
+  .radio{
+    border-radius: 50% !important;
+  }
+  input:checked ~ span.radio:after{
+        content: '';
+        width: 11px;
+        height: 11px;
+        box-sizing: border-box;
+        background-color: white;
+        position: absolute;
+        border-radius: 50%;
+        left: 5px;
+
+        top: 5px;
+        display: block;
+  }
 `;
 
 const Slider = () => {
+  const handleCheckbox = (e)=>{
+    console.log("checkbox");
+
+    console.log({
+    [e.target.name]: e.target.value
+    })
+
+  }
   return (
     <SliderContent>
       <div className="filters">
@@ -119,23 +143,23 @@ const Slider = () => {
           <div className="content">
             <div className="filter">
               <label>
-                <input type="checkbox" name="" id="" />
-                <span></span>
-                Date
+                <input onChange={handleCheckbox} type="radio" name="nameCategory" value="facebook" id="" />
+                <span className='radio'></span>
+                facebook
               </label>
             </div>
             <div className="filter">
               <label>
-                <input type="checkbox" name="" id="" />
-                <span></span>
-                Network
+                <input type="radio"  onChange={handleCheckbox} name="nameCategory" value="twitter"  id="" />
+                <span className='radio'></span>
+                twitter
               </label>
             </div>
             <div className="filter">
               <label>
-                <input type="checkbox" name="" id="" />
-                <span></span>
-                Title
+                <input type="radio"  onChange={handleCheckbox} name="nameCategory" value="otros" id="" />
+                <span className='radio'></span>
+                otros
               </label>
             </div>
           </div>
