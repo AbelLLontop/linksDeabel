@@ -27,23 +27,26 @@ linksController.updateLink = async (req, res) => {
     res.json({ error: e }).status(500);
   }
 };
-
+ 
 linksController.getLinks = async (req, res) => {
   try {
     const nameCategory = req.query.nameCategory;
-    const orderTitle = req.query.orderTitle;
+    const searchName = req.query.searchName;
     const orderCategory = req.query.orderCategory;
     const filter = {};
     const orders = {};
     if (nameCategory) {
       filter.nameCategory = nameCategory;
     }
-    if (orderTitle==1) {
-      orders.title = orderTitle;
+    if (searchName) {
+      filter.title = new RegExp(searchName, 'i');
     }
+    
     if (orderCategory==1) {
       orders.nameCategory = orderCategory;
     }
+    console.log('este es el filtro final');
+    console.log(filter);
     const links = await Link.find(filter).sort({...orders,updated_at:-1});
     res.json(links);
   } catch (err) { 
