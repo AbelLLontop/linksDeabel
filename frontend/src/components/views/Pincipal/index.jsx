@@ -8,18 +8,14 @@ import OptionsFilterNav from '../../common/OptionsFilterNav';
 const PrincipalPage = () => {
   const [links, setLinks] = useState([]);
   const {filter} = useContext(FilterContext);
-  useEffect(() => {
-    console.log(filter);
-    console.log("renderizando pagina y haciendo consulta")
-  })
+ 
 
   useEffect(() => {
-    console.log("consultando links");
+
     linkService
       .getAllLink(filter)
       .then((d) => {
         setLinks(d);
-        console.log(d);
       });
   }, [filter]);
   return (

@@ -38,7 +38,6 @@ export const InputForm2 = ({
 export const InputForm = ({ name = '', nameLabel = '', state,setState }) => {
 
   const [temblor, setTemblor] = useState(state.state == statesInput.error);
-  
   const handleInput = (e)=>{
     const valor = e.target.value;
     setState((a)=>({...a,valor:valor}));
@@ -58,7 +57,7 @@ export const InputForm = ({ name = '', nameLabel = '', state,setState }) => {
         name={nameLabel}
         messageText={state.message}
       />
-      <input disabled={state.state == statesInput.success} name={name} value={state.value} type="text" onChange={handleInput} />
+      <input disabled={state.state == statesInput.success} name={name} value={state.valor} type="text" onChange={handleInput} />
     </InputFormContent>
   );
 };

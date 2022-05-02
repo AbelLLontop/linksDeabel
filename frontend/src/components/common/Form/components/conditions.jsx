@@ -3,10 +3,8 @@ import { statesInput } from './statesInput';
 
 export const validateInput = (state, setState, arrayconditions) => {
   const conditionsArray = [...arrayconditions];
-  console.log(conditionsArray.length);
   for (let i = 0; i < conditionsArray.length; i++) {
     if (!conditionsArray[i](state, setState)) {
-      console.log('paso la validacion ' + i);
       return false;
     }
   }

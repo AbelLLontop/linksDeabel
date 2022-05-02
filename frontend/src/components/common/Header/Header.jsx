@@ -14,7 +14,11 @@ const HeaderContent = styled.header`
     font-weight: normal;
     padding: 0;
     margin: 0;
+    @media (max-width: 400px) {
+      font-size:26px;
   }
+  }
+  
 `;
 
 const Header = () => {

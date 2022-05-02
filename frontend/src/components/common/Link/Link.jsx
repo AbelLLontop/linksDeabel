@@ -3,9 +3,12 @@ import React from 'react';
 import { LinkContent } from './LinkContent';
 import { motion } from 'framer-motion';
 import SelecIcon from '../../ui/SocialIcons/utils/SelecIcon';
+import BtnFormOpenModalSetting from '../Btns/BtnFormOpenModalSetting';
 
 
-const Link = ({ title, fecha, link, description ,nameCategory}) => {
+const Link = ({linkObject}) => {
+  const { _id, link, title, description ,nameCategory} = linkObject;
+  const   fecha="una fecha" 
   return (
     <LinkContent
       as={motion.article}
@@ -16,10 +19,6 @@ const Link = ({ title, fecha, link, description ,nameCategory}) => {
       animate={{
         opacity: 1,
       }}
-      whileHover={{ scale: 1.04 }}
-      whileTap={{ scale: 0.98 }}
-      
-
       layout
     >
       <div  className='content-header'>
@@ -43,9 +42,8 @@ const Link = ({ title, fecha, link, description ,nameCategory}) => {
         <div className="iconOut">
           <i className="icon-link"></i>
         </div>
-        <div className="iconConfig">
-          <i className="icon-setting"></i>
-        </div>
+        <BtnFormOpenModalSetting data={{link,title,description,_id}} />
+
       </div>
     </LinkContent>
   );

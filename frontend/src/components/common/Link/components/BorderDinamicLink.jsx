@@ -20,8 +20,17 @@ const BorderDinamicLinkContent = styled.div`
 const SubBorderDinamicLinkContent = styled.div`
   border-left: solid 1px #d1d1d1;
   display: grid;
-  grid-template-columns: repeat(3,287px);
+  grid-template-columns: repeat(3,minmax(214px,287px));
+    grid-gap: 20px;
+  
   grid-gap: 20px;
+ 
+  @media (max-width: 930px) {
+    grid-template-columns: repeat(2,minmax(214px,287px));
+  }
+  @media (max-width: 680px) {
+      grid-template-columns: repeat(1,minmax(214px,1fr));
+  }
   padding: 1rem;
   position: relative;
   .date{

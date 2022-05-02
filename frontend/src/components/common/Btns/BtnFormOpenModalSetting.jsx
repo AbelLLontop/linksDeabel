@@ -6,7 +6,7 @@ import OverlayModal from '../../ui/Overlay/OverlayModal';
 import Form from '../Form/Form';
 
 
-const BtnFormOpenModalContainter = styled.div`
+const BtnFormOpenModalSettingContainter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,15 +16,12 @@ const BtnFormOpenModalContainter = styled.div`
   border-radius: 7px;
   background: #182833;
   color: #a1a1a1;
-  @media (max-width: 1137px) {
-      margin-right: 12px;
-  }
 `;
 const ContentForm = styled.div`
     width: 420px;
 `;
 
-const BtnFormOpenModal = () => {
+const BtnFormOpenModalSettingSetting = ({data}) => {
   const [visible, setVisible] = useState(false);
   const openModal = () => {
     setVisible(true);
@@ -34,17 +31,17 @@ const BtnFormOpenModal = () => {
   }
   return (
     <>
-      <BtnFormOpenModalContainter as={motion.div} whileHover={{ scale: 1.1 }}
+      <BtnFormOpenModalSettingContainter as={motion.div} whileHover={{ scale: 1.1 }}
     whileTap={{ scale: 0.9 }} onClick={openModal}>
-        <i className="icon-plus"></i> new Link
-      </BtnFormOpenModalContainter>
+         <i className="icon-setting"></i>
+      </BtnFormOpenModalSettingContainter>
       <OverlayModal visible={visible}>
         <ContentForm>
-          <Form  ocultar={closeModal}/>
+          <Form  data={data} ocultar={closeModal}/>
         </ContentForm>
       </OverlayModal>
     </>
   );
 };
 
-export default BtnFormOpenModal;
+export default BtnFormOpenModalSettingSetting;

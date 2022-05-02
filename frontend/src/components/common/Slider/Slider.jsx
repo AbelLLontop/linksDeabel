@@ -4,6 +4,7 @@ import { FilterContextSet } from '../../../contexts/Filters/FilterContext';
 
 const SliderContent = styled.nav`
   width: 200px;
+  
   height: 100vh;
   background-color: #090e12;
   position: sticky;
@@ -15,6 +16,13 @@ const SliderContent = styled.nav`
 
   justify-content: center;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+      width: 180px;
+  }
+    @media (max-width: 580px) {
+      width: 108px;
+  }
   .filters {
     padding-bottom: 1rem;
     margin-bottom: 1rem;
@@ -27,11 +35,26 @@ const SliderContent = styled.nav`
     .subtitle {
       font-size: 0.8rem;
       padding-left: 2rem;
+
+      @media (max-width: 768px) {
+        padding-left: .4rem;
+  }
+    @media (max-width: 580px) {
+      padding-left: 0rem;
+  }
+
+      
       header {
         padding-bottom: 0.4rem;
       }
       .content {
         padding-left: 1rem;
+        @media (max-width: 768px) {
+        padding-left: .4rem;
+  }
+    @media (max-width: 580px) {
+      padding-left: 0rem;
+  }
       }
     }
     .filter {
@@ -126,21 +149,18 @@ const Slider = () => {
   const { setFilter } = useContext(FilterContextSet);
 
   const handleRadio= (e) => {
-    console.log('checkbox'); 
     setFilter((filter) => ({
       ...filter,
       [e.target.name]: e.target.value,
     }));
   };
   const handleRadioTodos= (e) => {
-    console.log('checkbox');
     setFilter((filter) => ({
       ...filter,
       nameCategory: '',
     }));
   };
   const handleCheckboxCategory= (e) => {
-    console.log('checkbox');
     const value = e.target.checked?1:0;
      setFilter((filter) => ({
        ...filter,
@@ -158,8 +178,16 @@ const Slider = () => {
             <InputLabelRadio handle={handleRadio} name="Linkedin" />
             <InputLabelRadio handle={handleRadio} name="Twitter" />
             <InputLabelRadio handle={handleRadio} name="Youtube" />
+            <InputLabelRadio handle={handleRadio} name="Facebook" />
+            <InputLabelRadio handle={handleRadio} name="Discord" />
+            <InputLabelRadio handle={handleRadio} name="Figma" />
+            <InputLabelRadio handle={handleRadio} name="Instagram" />
+            <InputLabelRadio handle={handleRadio} name="Medium" />
+            <InputLabelRadio handle={handleRadio} name="Pinteres" />
+            <InputLabelRadio handle={handleRadio} name="Tiktok" />
+            <InputLabelRadio handle={handleRadio} name="Twitch" />
+            <InputLabelRadio handle={handleRadio} name="Whatsapp" />
             <InputLabelRadio handle={handleRadioTodos} name="Todos"/>
-            
           </div>
         </div>
       </div>

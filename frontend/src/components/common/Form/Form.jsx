@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useRef, useContext, useEffect } from 'react';
 import FormContent from './FormContent';
 import { statesInput } from './components/statesInput';
 import { HeaderForm } from './components/HeaderForm';
@@ -14,12 +14,12 @@ import { selectorColor } from './components/selectorColor';
 import linkService from '../../../services/LinkService';
 import { FilterContextSet } from '../../../contexts/Filters/FilterContext';
 
-const useStateInput = (state = statesInput.default) => {
+const useStateInput = (state = statesInput.default,valor='') => {
   const [stateInput, setStateInput] = useState({
     colors: selectorColor(state.state),
     state: state,
     message: '',
-    valor: '',
+    valor:valor,
   });
   return [stateInput, setStateInput];
 };
@@ -33,13 +33,30 @@ const disabledInputSusses = (setState,message) => {
   }));
 }
 
-const Form = ({ocultar}) => {
-  const [stateInputLink, setStateInputLink] = useStateInput();
-  const [stateInputTitle, setStateInputTitle] = useStateInput();
-  const [stateInputDescription, setStateInputDescription] = useStateInput();
+const Form = ({ocultar,data=null}) => {
+  const [stateInputLink, setStateInputLink] = useStateInput(statesInput.default,data?data.link:'');
+  const [stateInputTitle, setStateInputTitle] = useStateInput(statesInput.default,data?data.title:'');
+  const [stateInputDescription, setStateInputDescription] = useStateInput(statesInput.default,data?data.description:'');
   const [loading, setLoading] = useState(false);
   const { setFilter } = useContext(FilterContextSet);
- 
+  const handleRadioTodos= (e) => {
+    setFilter((filter) => ({
+      ...filter,
+      nameCategory: '',
+    }));
+  };
+  const eliminar = () => {
+    linkService.deleteLink(data._id)
+    .then(() => {
+          handleRadioTodos();
+            ocultar();
+          })
+  .catch(() => {
+      console.log('error');
+      });
+  };
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -55,15 +72,7 @@ const Form = ({ocultar}) => {
       setStateInputDescription,
       [conditionEmpty]
     );
-    const handleRadioTodos= (e) => {
-      console.log('checkbox');
-      setFilter((filter) => ({
-        ...filter,
-        nameCategory: '',
-      }));
-    };
-
-
+    
 
     if (validationLink && validationTitle && validationDescription) {
       const url = new URL(stateInputLink.valor);
@@ -75,14 +84,14 @@ const Form = ({ocultar}) => {
       }
     
       const hostNameFirstWorddUpper = domain.charAt(0).toUpperCase() + domain.slice(1);
-      console.log(hostNameFirstWorddUpper);
       page = hostNameFirstWorddUpper;
-      console.log('TODO ESTA CORRECTO');
       disabledInputSusses(setStateInputLink, 'Guardando URL...');
       disabledInputSusses(setStateInputDescription, 'Guardando Descripcion...');
       disabledInputSusses(setStateInputTitle, 'Guardando Titulo...');
       setLoading(true);
 
+      //creacion
+      if(data===null){
       const objetoRes = {
         "link": stateInputLink.valor,
         "user": "625da0c2b2fc43ecde7974fb",
@@ -90,22 +99,35 @@ const Form = ({ocultar}) => {
         "description": stateInputDescription.valor,
         "nameCategory": page,
         }
-        console.log(objetoRes);
 
 
       linkService.createLink({...objetoRes}).then(res=>{
-          console.log(res);
-          console.log('salio todo bien');
           handleRadioTodos();
           ocultar();
         }).catch(err=>{
           console.log(err);
           console.log('salio todo mal');
         });
-
-
-      //logica de envio de datos
-
+      }else{
+        const objetoRes = {
+          "link": stateInputLink.valor,
+          "user": "625da0c2b2fc43ecde7974fb",
+          "title": stateInputTitle.valor,
+          "description": stateInputDescription.valor,
+          "nameCategory": page,
+          "id":data._id
+          }
+          linkService.updateLink({...objetoRes}).then(res=>{
+            console.log(res);
+            console.log('salio todo bien');
+            handleRadioTodos();
+            ocultar();
+          }).catch(err=>{
+            console.log(err);
+            console.log('salio todo mal');
+          });
+      }
+        //actualizacion
 
 
     } else {
@@ -156,7 +178,7 @@ const Form = ({ocultar}) => {
           setState={setStateInputDescription}
         />
       </div>
-      <ButtonsForm ocultar={ocultar}/>
+      <ButtonsForm ocultar={ocultar} data = {data?data:null} eliminar={data?eliminar:null} />
     </FormContent>
   );
 };

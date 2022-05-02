@@ -15,6 +15,12 @@ label{
     padding: 9px 15px;
     align-items: center;
     cursor: text;
+    @media (max-width: 768px) {
+      width: 200px;
+  }
+    @media (max-width: 580px) {
+      width: 100px;
+  }
   
 }
     

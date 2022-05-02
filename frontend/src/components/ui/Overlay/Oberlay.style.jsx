@@ -11,4 +11,5 @@ display: grid;
 z-index: 99;
 overflow-y: auto;
 backdrop-filter: blur(1px);
+cursor: auto;
 `;

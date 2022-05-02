@@ -22,15 +22,10 @@ const ListLink = ({ links }) => {
         <BorderDinamicLink key={filter.category} title={filter.category}>
           {filter.dates?.map((linkDate) => (
             <SubBorderDinamicLink key={linkDate.date} title={linkDate.date}>
-              {linkDate.links?.map(({ _id, link, title, description ,nameCategory}) => (
+              {linkDate.links?.map((link) => (
                 <Link
-                  key={_id}
-                  title={title}
-                  link={link}
-                  fecha="una fecha"
-                  description={description}
-                  nameCategory={nameCategory}
-
+                  key={link._id}
+                  linkObject={link}
                 />
               ))}
             </SubBorderDinamicLink>

@@ -11,7 +11,6 @@ const InputSearch = () => {
   const handleSearch= (e) => {
     e.preventDefault();
     const dataSearch = refSearch.current.value;
-    console.log('checkbox');
 
       setFilter((filter) => ({
         ...filter,
