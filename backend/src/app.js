@@ -20,4 +20,19 @@ app.use('/api/links',require('./routes/links'));
 app.use('/api/categories',require('./routes/categories'));
 
 
+app.get('*',(req,res)=>{
+    return res.status(404).json({
+        errors: [
+          {
+            msg: 'La pagina nop existe',
+            param: 'all',
+            location: 'body',
+          },
+        ],
+      });
+}
+);
+
+
+
 module.exports = app;

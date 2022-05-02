@@ -5,6 +5,7 @@ const validateResult = (req,res,next)=>{
         validationResult(req).throw();
         next();
     }catch(err){
+        console.log('un error en la conexion');
         res.status(403).json(err);
     }
 }

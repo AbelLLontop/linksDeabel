@@ -12,6 +12,7 @@ const getAllLink = async(filters) => {
     });
     return result.data;
   }catch(e){
+    console.log(e)
     return e.response.data;
   }
 }

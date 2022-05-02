@@ -7,6 +7,7 @@ linksController.updateLink = async (req, res) => {
   try {
 
     const usuario = await User.findOne({ _id: req.body.user }, { _id: 1 });
+  
     console.log('name categoria');
     console.log(req.body.nameCategory);
     let categoria = await Category.findOne(
