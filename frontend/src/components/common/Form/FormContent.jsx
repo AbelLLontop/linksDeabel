@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 const FormContent = styled.div`
-  background-color: #12161b;
-  border-radius: 27px;
-  border: solid 1px #12161b;
-  padding: 35px 40px;
-  color: #afb4b8;
+ background-color: #080606b0;
+    border-radius: 15px;
+    padding: 35px 40px;
+    color: #ffffff;
+    backdrop-filter: blur(4px);
 
   & > header {
     font-size: 1rem;
@@ -13,25 +13,14 @@ const FormContent = styled.div`
     align-items: center;
     justify-content: center;
     color:#AFB4B8;
+    flex-direction: column;
+    padding-bottom: 1rem;
     gap:.4rem;
     i{
         font-size: 1.8rem;
     }
   }
   
-  .logo-container {
-    padding: 1rem 0;
-    display:flex;
-    justify-content: center;
-  }
-  .logo {
-    width: 156px;
-    height: 156px;
-    border-radius: 50%;
-    background-color: #1877f2;
-  }
- 
- 
  
   .buttons{
       display: flex;

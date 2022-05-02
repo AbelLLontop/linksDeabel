@@ -31,7 +31,7 @@ const disabledInputSusses = (setState,message) => {
   }));
 }
 
-const Form = () => {
+const Form = ({ocultar}) => {
   const [stateInputLink, setStateInputLink] = useStateInput();
   const [stateInputTitle, setStateInputTitle] = useStateInput();
   const [stateInputDescription, setStateInputDescription] = useStateInput();
@@ -69,7 +69,6 @@ const Form = () => {
   return (
     <FormContent as="form" onSubmit={handleSubmit}  autoComplete="off">
       <HeaderForm />
-      <LogoForm />
       {loading && (
         <div
           style={{
@@ -109,7 +108,7 @@ const Form = () => {
           setState={setStateInputDescription}
         />
       </div>
-      <ButtonsForm />
+      <ButtonsForm ocultar={ocultar}/>
     </FormContent>
   );
 };

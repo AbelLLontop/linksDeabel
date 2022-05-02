@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
+import { FilterContextSet } from '../../../contexts/Filters/FilterContext';
 
 const SliderContent = styled.nav`
   width: 200px;
   height: 100vh;
-  background-color: #14222c;
+  background-color: #090e12;
   position: sticky;
   top: 0px;
   color: #74797c;
@@ -77,34 +78,76 @@ const SliderContent = styled.nav`
     input:checked ~ span {
       background-color: #2489f6;
     }
-  }
-  .radio{
+  } 
+  .radio {
     border-radius: 50% !important;
   }
-  input:checked ~ span.radio:after{
-        content: '';
-        width: 11px;
-        height: 11px;
-        box-sizing: border-box;
-        background-color: white;
-        position: absolute;
-        border-radius: 50%;
-        left: 5px;
+  input:checked ~ span.radio:after {
+    content: '';
+    width: 11px;
+    height: 11px;
+    box-sizing: border-box;
+    background-color: white;
+    position: absolute;
+    border-radius: 50%;
+    left: 5px;
 
-        top: 5px;
-        display: block;
+    top: 5px;
+    display: block;
   }
 `;
 
+const InputLabelRadio = ({ handle, name}) => (
+  <div className="filter">
+    <label>
+      <input
+        onChange={handle}
+        type="radio"
+        name="nameCategory"
+        value={name}
+        id=""
+      />
+      <span className="radio"></span>
+      {name}
+    </label>
+  </div>
+);
+const InputLabelCheckbox = ({ handleChange, name }) => (
+  <div className="filter">
+  <label>
+    <input onChange={handleChange} type="checkbox" name="" id="" />
+    <span></span>
+    {name}
+  </label>
+</div>
+);
+
 const Slider = () => {
-  const handleCheckbox = (e)=>{
-    console.log("checkbox");
+  const { setFilter } = useContext(FilterContextSet);
 
-    console.log({
-    [e.target.name]: e.target.value
-    })
+  const handleRadio= (e) => {
+    console.log('checkbox');
+    setFilter((filter) => ({
+      ...filter,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  const handleRadioTodos= (e) => {
+    console.log('checkbox');
+    setFilter((filter) => ({
+      ...filter,
+      nameCategory: '',
+    }));
+  };
+  const handleCheckboxCategory= (e) => {
+    console.log('checkbox');
+    const value = e.target.checked?1:0;
+     setFilter((filter) => ({
+       ...filter,
+       orderCategory: value,
+     }));
+  };
 
-  }
   return (
     <SliderContent>
       <div className="filters">
@@ -112,27 +155,10 @@ const Slider = () => {
         <div className="subtitle">
           <header>Network</header>
           <div className="content">
-            <div className="filter">
-              <label>
-                <input type="checkbox" name="" id="" />
-                <span></span>
-                Facebook
-              </label>
-            </div>
-            <div className="filter">
-              <label>
-                <input type="checkbox" name="" id="" />
-                <span></span>
-                Youtube
-              </label>
-            </div>
-            <div className="filter">
-              <label>
-                <input type="checkbox" name="" id="" />
-                <span></span>
-                Otros
-              </label>
-            </div>
+            <InputLabelRadio handle={handleRadio} name="Linkedin" />
+            <InputLabelRadio handle={handleRadio} name="Twitter" />
+            <InputLabelRadio handle={handleRadio} name="Youtube" />
+            <InputLabelRadio handle={handleRadioTodos} name="Todos"/>
           </div>
         </div>
       </div>
@@ -141,27 +167,8 @@ const Slider = () => {
         <div className="subtitle">
           <header>Network</header>
           <div className="content">
-            <div className="filter">
-              <label>
-                <input onChange={handleCheckbox} type="radio" name="nameCategory" value="facebook" id="" />
-                <span className='radio'></span>
-                facebook
-              </label>
-            </div>
-            <div className="filter">
-              <label>
-                <input type="radio"  onChange={handleCheckbox} name="nameCategory" value="twitter"  id="" />
-                <span className='radio'></span>
-                twitter
-              </label>
-            </div>
-            <div className="filter">
-              <label>
-                <input type="radio"  onChange={handleCheckbox} name="nameCategory" value="otros" id="" />
-                <span className='radio'></span>
-                otros
-              </label>
-            </div>
+            <InputLabelCheckbox handleChange={handleCheckboxCategory} name="Category" />
+           
           </div>
         </div>
       </div>

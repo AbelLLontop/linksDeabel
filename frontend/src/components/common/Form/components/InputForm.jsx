@@ -30,7 +30,7 @@ export const InputForm2 = ({
         name={nameLabel}
         messageText={state.message}
       />
-      <input name={name} value={state.value} type="text" ref={referencia} />
+      <input name={name} autoFocus value={state.value} type="text" ref={referencia} />
     </InputFormContent>
   );
 };

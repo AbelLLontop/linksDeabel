@@ -2,8 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HeaderContent = styled.header`
-  color: #a3b0bb;
-    padding: 16px 0;
+    color: #d3d2d2;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-left: solid 1px #acadae;
+    padding-left: 16px;
+    padding-top: 28px;
   h1,
   h2 {
     font-size: 32px;

@@ -4,7 +4,7 @@ import PrincipalPage from './components/views/Pincipal';
 import FilterProvider from './contexts/Filters/FilterProvider';
 
 const AppContent = styled.div`
-  background-color: #14222c;
+ background-color: #090e12;
   width: 100%;
   height: 100vh;
   overflow-y: scroll;

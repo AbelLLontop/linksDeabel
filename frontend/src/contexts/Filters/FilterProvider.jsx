@@ -3,8 +3,8 @@ import { FilterContext, FilterContextSet } from './FilterContext';
 
 const initialFilters = {
   nameCategory: '',
-  orderTitle: 0,
-  orderCategory: 1,
+  orderCategory: 0, 
+  searchName:''
 };
 
 const FilterProvider = ({ children }) => {
