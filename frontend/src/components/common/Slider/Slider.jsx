@@ -126,7 +126,7 @@ const Slider = () => {
   const { setFilter } = useContext(FilterContextSet);
 
   const handleRadio= (e) => {
-    console.log('checkbox');
+    console.log('checkbox'); 
     setFilter((filter) => ({
       ...filter,
       [e.target.name]: e.target.value,
@@ -159,6 +159,7 @@ const Slider = () => {
             <InputLabelRadio handle={handleRadio} name="Twitter" />
             <InputLabelRadio handle={handleRadio} name="Youtube" />
             <InputLabelRadio handle={handleRadioTodos} name="Todos"/>
+            
           </div>
         </div>
       </div>
@@ -168,7 +169,6 @@ const Slider = () => {
           <header>Network</header>
           <div className="content">
             <InputLabelCheckbox handleChange={handleCheckboxCategory} name="Category" />
-           
           </div>
         </div>
       </div>

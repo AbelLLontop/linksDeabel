@@ -27,7 +27,7 @@ linksController.updateLink = async (req, res) => {
     res.json({ error: e }).status(500);
   }
 };
- 
+
 linksController.getLinks = async (req, res) => {
   try {
     const nameCategory = req.query.nameCategory;
@@ -41,15 +41,15 @@ linksController.getLinks = async (req, res) => {
     if (searchName) {
       filter.title = new RegExp(searchName, 'i');
     }
-    
-    if (orderCategory==1) {
+
+    if (orderCategory == 1) {
       orders.nameCategory = orderCategory;
     }
     console.log('este es el filtro final');
     console.log(filter);
-    const links = await Link.find(filter).sort({...orders,updated_at:-1});
+    const links = await Link.find(filter).sort({ ...orders, updated_at: -1 });
     res.json(links);
-  } catch (err) { 
+  } catch (err) {
     console.log('ocurrio un error');
     res.json({ error: err }).status(500);
   }
@@ -58,7 +58,7 @@ linksController.getLinks = async (req, res) => {
 linksController.getLink = async (req, res) => {
   try {
     const link = await Link.find({ _id: req.params.id });
-    res.json(link); 
+    res.json(link);
   } catch (err) {
     console.log('ocurrio un error');
     res.json({ error: err }).status(500);
@@ -69,23 +69,35 @@ linksController.createLink = async (req, res) => {
   try {
     console.log(req.body);
     const usuario = await User.findOne({ _id: req.body.user }, { _id: 1 });
-    const categoria = await Category.findOne(
-      { _id: req.body.category },
+    console.log('name categoria')
+    console.log(req.body.nameCategory )
+    let categoria = await Category.findOne(
+      { name: req.body.nameCategory },
       { _id: 1, name: 1 }
     );
+    console.log(categoria)
+    if (!categoria) {
+      categoria = await Category.findOne(
+        { name: 'Google' },
+        { _id: 1, name: 1 }
+      );
+    }
     if (!usuario || !categoria) {
       return res.status(400).json({
         errors: [
           {
             msg: 'El usuario o categoria no existe',
-            param: 'all',
+            param: 'all', 
             location: 'body',
           },
         ],
       });
     } else {
-      const link = new Link({ ...req.body });
-      const newLink = new Link({ ...req.body, nameCategory: categoria.name });
+      const newLink = new Link({
+        ...req.body,
+        nameCategory: categoria.name,
+        category: categoria._id,
+      });
       const linkSaved = await newLink.save();
       console.log(linkSaved);
       return res.status(200).json(linkSaved);
@@ -96,14 +108,14 @@ linksController.createLink = async (req, res) => {
   }
 };
 
-linksController.deleteLink = async (req,res)=>{
-  console.log("param "+req.params)
-  try{
-    const linkCurrent = await Link.findOne({_id:req.params.id});
-    if(linkCurrent){
+linksController.deleteLink = async (req, res) => {
+  console.log('param ' + req.params);
+  try {
+    const linkCurrent = await Link.findOne({ _id: req.params.id });
+    if (linkCurrent) {
       const linkRemoved = await linkCurrent.remove();
       return res.status(200).json(linkRemoved);
-    }else{
+    } else {
       return res.status(400).json({
         errors: [
           {
@@ -113,13 +125,11 @@ linksController.deleteLink = async (req,res)=>{
           },
         ],
       });
-  }
-  }catch(e){
+    }
+  } catch (e) {
     console.log('ocurrio un error');
     res.json({ error: err }).status(500);
   }
-}
-
-
+};
 
 module.exports = linksController;

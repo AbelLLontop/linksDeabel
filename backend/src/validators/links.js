@@ -20,16 +20,6 @@ const validateLink = [
     .exists()
     .notEmpty()
     .withMessage('La descripcion es requerida'),
-  body('category')
-    .exists()
-    .notEmpty()
-    .withMessage('La categoria es requerida')
-    .custom((value) => {
-      if (!ObjectId.isValid(value)) {
-        throw new Error('El id no es valido');
-      }
-      return true;
-    }),
   (req, res, next) => {
     validateResult(req, res, next);
   },

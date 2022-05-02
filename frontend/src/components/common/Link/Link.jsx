@@ -2,8 +2,10 @@ import React from 'react';
 
 import { LinkContent } from './LinkContent';
 import { motion } from 'framer-motion';
+import SelecIcon from '../../ui/SocialIcons/utils/SelecIcon';
 
-const Link = ({ title, fecha, link, description }) => {
+
+const Link = ({ title, fecha, link, description ,nameCategory}) => {
   return (
     <LinkContent
       as={motion.article}
@@ -20,10 +22,15 @@ const Link = ({ title, fecha, link, description }) => {
 
       layout
     >
+      <div  className='content-header'>
       <header>
         <div>{title}</div>
         <span>{fecha}</span>
       </header>
+      <div className="icon-page">
+        <SelecIcon nameIcon={nameCategory}/>
+      </div>
+      </div>
       <div className="link">
         <a target={'_blank'} href={link}>
           {link}
@@ -32,13 +39,11 @@ const Link = ({ title, fecha, link, description }) => {
       <div className="description">
         <p>{description}</p>
       </div>
-      <div className="options">
+      <div className="options"> 
         <div className="iconOut">
-          {' '}
           <i className="icon-link"></i>
         </div>
         <div className="iconConfig">
-          {' '}
           <i className="icon-setting"></i>
         </div>
       </div>

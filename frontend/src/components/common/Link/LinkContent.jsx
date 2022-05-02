@@ -44,4 +44,11 @@ export const LinkContent = styled.article`
       justify-content: space-between;
       padding-top: 12px;
   }
+  .content-header{
+    display: flex;
+    justify-content: space-between;
+    i{
+      font-size: 30px !important;
+    }
+  }
 `;
