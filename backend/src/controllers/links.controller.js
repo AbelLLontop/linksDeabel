@@ -1,7 +1,11 @@
+const Category = require("@models/Category");
+const Link = require("@models/Link");
+const User = require("@models/User");
+
 const linksController = {};
-const Link = require('../models/Link');
-const User = require('../models/User');
-const Category = require('../models/category');
+// const Link
+// const User
+// const Category 
 
 linksController.updateLink = async (req, res) => {
   try {
@@ -55,6 +59,7 @@ linksController.updateLink = async (req, res) => {
     res.json({ error: err }).status(500);
   }
 };
+
 
 linksController.createLink = async (req, res) => {
   try {

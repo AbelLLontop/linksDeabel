@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from "framer-motion";
-
-import OverlayModal from '../../ui/Overlay/OverlayModal';
-import Form from '../Form/Form';
-
+import OverlayModal from '@/components/ui/Overlay/OverlayModal';
+import Form from '@/components/common/Form/Form';
 
 const BtnFormOpenModalContainter = styled.div`
   display: flex;

@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from 'react';
-import { FilterContextSet } from '../../../../contexts/Filters/FilterContext';
+import { FilterContextSet } from '@/contexts/Filters/FilterContext';
 import { InputSearchContent } from './style';
 
 const InputSearch = () => {

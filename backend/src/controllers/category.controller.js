@@ -1,10 +1,12 @@
+const Category = require("@models/Category");
+
+
 const categoriesController = {};
-const Category = require('../models/category');
+
 
 categoriesController.updateCategory = async (req,res)=>{
-    try{
+  try{
         const categoryCurrent = await Category.findOne({_id:req.body.id});
-
         if(categoryCurrent){
             const updateCurrent = await categoryCurrent.update({...req.body});
             return res.status(200).json(updateCurrent);

@@ -2,8 +2,9 @@ import React from 'react';
 
 import { LinkContent } from './LinkContent';
 import { motion } from 'framer-motion';
-import SelecIcon from '../../ui/SocialIcons/utils/SelecIcon';
-import BtnFormOpenModalSetting from '../Btns/BtnFormOpenModalSetting';
+
+import BtnFormOpenModalSetting from '@/components/common/Btns/BtnFormOpenModalSetting';
+import SelecIcon from '@/components/ui/SocialIcons/utils/SelecIcon';
 
 
 const Link = ({linkObject}) => {

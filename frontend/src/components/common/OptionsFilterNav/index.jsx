@@ -1,7 +1,7 @@
-import BtnFormOpenModal from '../Btns/BtnFormOpenModal';
 
-import InputSearch from '../Inputs/InputSearch';
 
+import BtnFormOpenModal from '@/components/common/Btns/BtnFormOpenModal';
+import InputSearch from '@/components/common/Inputs/InputSearch';
 import { OptionsContent } from './style';
 
 const OptionsFilterNav = () => {

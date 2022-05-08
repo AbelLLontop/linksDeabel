@@ -1,9 +1,10 @@
+import Header from '@/components/common/Header/Header';
+import ListLink from '@/components/common/Link/ListLink';
+import OptionsFilterNav from '@/components/common/OptionsFilterNav';
+import { FilterContext } from '@/contexts/Filters/FilterContext';
+import linkService from '@/services/LinkService';
 import React, { useContext, useEffect, useState } from 'react';
-import { FilterContext } from '../../../contexts/Filters/FilterContext';
-import linkService from '../../../services/LinkService';
-import Header from '../../common/Header/Header';
-import ListLink from '../../common/Link/ListLink';
-import OptionsFilterNav from '../../common/OptionsFilterNav';
+
 
 const PrincipalPage = () => {
   const [links, setLinks] = useState([]);

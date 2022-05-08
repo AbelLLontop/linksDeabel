@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "jsx": "preserve",
+      "baseUrl": "./src",
+      "paths": {
+        "@/assets/*": ["./assets/*"],
+        "@/components/*": ["./components/*"],
+        "@/config/*": ["./config/*"],
+        "@/contexts/*": ["./contexts/*"],
+        "@/hooks/*": ["./hooks/*"],
+        "@/services/*": ["./services/*"],
+        "@/styles/*": ["./styles/*"],
+        "@/utils/*": ["./utils/*"]
+      },
+    },
+  }

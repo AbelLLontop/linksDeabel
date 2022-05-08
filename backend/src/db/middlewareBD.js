@@ -1,4 +1,4 @@
-const connectionBD = require('./config');
+const connectionBD = require('@db/config');
 
 const middlewareBd = (req, res, next) => {
     connectionBD.then((db) => {

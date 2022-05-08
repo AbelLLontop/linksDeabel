@@ -11,8 +11,8 @@ import {
   validateInput,
 } from './components/conditions';
 import { selectorColor } from './components/selectorColor';
-import linkService from '../../../services/LinkService';
-import { FilterContextSet } from '../../../contexts/Filters/FilterContext';
+import linkService from '@/services/LinkService';
+import { FilterContextSet } from '@/contexts/Filters/FilterContext';
 
 const useStateInput = (state = statesInput.default,valor='') => {
   const [stateInput, setStateInput] = useState({

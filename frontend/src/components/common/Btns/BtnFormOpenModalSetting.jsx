@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from "framer-motion";
 
-import OverlayModal from '../../ui/Overlay/OverlayModal';
-import Form from '../Form/Form';
+import OverlayModal from '@/components/ui/Overlay/OverlayModal';
+import Form from '@/components/common/Form/Form';
 
 
 const BtnFormOpenModalSettingContainter = styled.div`
@@ -21,7 +21,7 @@ const ContentForm = styled.div`
     width: 420px;
 `;
 
-const BtnFormOpenModalSettingSetting = ({data}) => {
+const BtnFormOpenModalSetting = ({data}) => {
   const [visible, setVisible] = useState(false);
   const openModal = () => {
     setVisible(true);
@@ -44,4 +44,4 @@ const BtnFormOpenModalSettingSetting = ({data}) => {
   );
 };
 
-export default BtnFormOpenModalSettingSetting;
+export default BtnFormOpenModalSetting;

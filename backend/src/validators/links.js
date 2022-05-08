@@ -1,7 +1,7 @@
 const { body, param,query} = require('express-validator');
 const { ObjectId } = require('mongoose').Types;
 
-const validateResult = require('../middlewares/validateHerlper');
+const validateResult = require('@middlewares/validateHerlper');
 
 const validateLink = [
   body('user')

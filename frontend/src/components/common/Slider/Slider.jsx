@@ -1,6 +1,7 @@
+import { FilterContextSet } from '@/contexts/Filters/FilterContext';
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
-import { FilterContextSet } from '../../../contexts/Filters/FilterContext';
+
 
 const SliderContent = styled.nav`
   width: 200px;
